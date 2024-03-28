@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Button, StyleSheet, Text, TouchableOpacity, Alert, View, TextInput } from 'react-native';
 
 
-export default function Home(){
+export default function App(){
 
   const [url, setUrl] = useState(null);
 

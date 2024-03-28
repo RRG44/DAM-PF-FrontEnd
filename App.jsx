@@ -13,12 +13,12 @@ const App = () => {
   const palette = colorScheme === 'dark' ? darkColors : lightColors;
 
   return (
-    <NavigationContainer initialRouteName = "Camera">
-      <Stack.Navigator>
-        <Stack.Screen name = "Home" component = {Home} options = {{ headerShwon : false }}/>
-        <Stack.Screen name = "Camera" component = {Camera} options = {{ headerShwon : false }}/>
-        <Stack.Screen name = "UrlResults" component = {UrlResults} options = {{ headerShwon : false }}/>
-        <Stack.Screen name = "UrlScan" component = {UrlScan} options = {{ headerShwon : false }}/>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName = "Camera">
+        <Stack.Screen name = "Home" component = {Home} options = {{ headerShown : false }}/>
+        <Stack.Screen name = "Camera" component = {Camera} options = {{ headerShown : false }}/>
+        <Stack.Screen name = "UrlResults" component = {UrlResults} options = {{ headerShown : false }}/>
+        <Stack.Screen name = "UrlScan" component = {UrlScan} options = {{ headerShown : false }}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

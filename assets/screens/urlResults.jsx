@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Button, StyleSheet, Text, TouchableOpacity, Alert, View } from 'react-native';
 
 
-export default function Home(){
+export default function App(){
   return (
     <View style = {styles.mainContainer}>
       <Text>Here goes the url scan result</Text>

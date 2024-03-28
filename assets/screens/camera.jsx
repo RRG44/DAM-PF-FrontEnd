@@ -1,6 +1,6 @@
 import { CameraView, useCameraPermissions, Camera } from 'expo-camera/next';
 import { useEffect, useState } from 'react';
-import { Button, StyleSheet, Text, TouchableOpacity, Alert, View } from 'react-native';
+import { Button, StyleSheet, Text, TouchableOpacity, Alert, View, Image } from 'react-native';
 
 export default function App() {
   const [facing, setFacing] = useState('back');
@@ -41,13 +41,36 @@ export default function App() {
 
   return (
     <View style = {{height : '100%'}}>
-      <CameraView style = {styles.camera} enableTorch = {torch} facing={facing} onBarcodeScanned={(BarCodeScanningResult)=> readQr(BarCodeScanningResult)}>
+      <CameraView 
+        style = {styles.camera} 
+        enableTorch = {torch} 
+        facing={facing}
+        onBarcodeScanned={(BarCodeScanningResult)=> readQr(BarCodeScanningResult)}
+        barcodeScannerSettings={{
+          barcodeTypes: ["qr"],
+        }}
+>
         <View style = {styles.cameraContainer}>
-          <View></View>
-          <View></View>
           <View>
+
+          </View>
+          <View>
+            {/* <Image 
+              style = {styles.qrImg}
+              source={require('../images/qr.png')}/> */}
+          </View>
+          <View style = {{alignItems: 'center', justifyContent: 'space-between', flexDirection: 'row', width: '85%'}}>
+            
+            <TouchableOpacity style = {styles.btn}  onPress={changeTorchState}>
+              <Image 
+                style = {styles.btnImg}
+                source={torch ? require('../images/bulb-off.png') : require('../images/bulb-on.png')}/>
+            </TouchableOpacity>
+            
             <TouchableOpacity style = {styles.btn}  onPress={toggleCameraFacing}>
-              <Text >Flip Camera</Text>
+              <Image 
+                style = {styles.btnImg}
+                source={require('../images/change.png')}/>
             </TouchableOpacity>
           </View>
         </View>
@@ -59,21 +82,32 @@ export default function App() {
 const styles = StyleSheet.create({
   btn:
   {
-    backgroundColor: 'white',
-    width: 150,
-    height: 50,
+    backgroundColor: '#00000055',
+    width: 100,
+    height: 100,
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 10,
+    borderRadius: 100,
   },
   cameraContainer:
   {
     height: '95%',
     alignItems: 'center',
-    justifyContent: 'flex-end',
+    justifyContent: 'space-between',
   },
   camera:
   {
     height: '100%'
   },
+  qrImg:
+  {
+    width: 300,
+    height: 300,
+  },
+  btnImg:
+  {
+    width: 50,
+    height: 50,
+    tintColor: 'white'
+  }
 });
