@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Button, StyleSheet, Text, TouchableOpacity, Alert, View, TextInput } from 'react-native';
-
+import { ComponentButton, ComponentButtonMain } from '../components/components';
 
 export default function App(){
 
@@ -8,10 +8,9 @@ export default function App(){
 
   return (
     <View style = {styles.mainContainer}>
-      <Text>Choose how to scan</Text>
-      <TouchableOpacity>
-        <Text>By QR</Text>
-      </TouchableOpacity>
+      <Text style = {styles.title}>How to scan?:</Text>
+      <Text>By QR</Text>
+      <ComponentButtonMain text = "Scann a QR code"/>
       <TextInput
         style = {styles.input}
         multiline = {false}
@@ -20,9 +19,7 @@ export default function App(){
         onChangeText = { text => setUrl(text)}
         value = {url} 
       />
-      <TouchableOpacity>
-        <Text>Test Url</Text>
-      </TouchableOpacity>
+      <ComponentButton text = "Test Url"/>
     </View>
   );
 };
@@ -38,6 +35,17 @@ const styles = StyleSheet.create({
   },
   input : 
   {
-    width: '80%'
+    width: 300,
+    height: 55,
+    margin: 15,
+    paddingHorizontal: 15,
+    borderWidth: 1,
+    borderRadius: 5,
+  },
+  title:
+  {
+    fontSize: 24,
+    fontWeight: 'bold',
+    margin: 15
   },
 });
