@@ -51,21 +51,30 @@ export default function App() {
         }}
 >
         <View style = {styles.cameraContainer}>
-          <View>
 
+          <View>
+            <TouchableOpacity style = {styles.btn}  onPress={changeTorchState}>
+              <Image 
+                style = {styles.btnImg}
+                source={require('../images/close.png')}/>
+            </TouchableOpacity>
           </View>
+
           <View>
             {/* <Image 
               style = {styles.qrImg}
               source={require('../images/qr.png')}/> */}
           </View>
+
           <View style = {{alignItems: 'center', justifyContent: 'space-between', flexDirection: 'row', width: '85%'}}>
             
-            <TouchableOpacity style = {styles.btn}  onPress={changeTorchState}>
-              <Image 
-                style = {styles.btnImg}
-                source={torch ? require('../images/bulb-off.png') : require('../images/bulb-on.png')}/>
-            </TouchableOpacity>
+            ({facing == 'back' && 
+              <TouchableOpacity style = {styles.btn}  onPress={changeTorchState}>
+                <Image 
+                  style = {styles.btnImg}
+                  source={torch ? require('../images/bulb-off.png') : require('../images/bulb-on.png')}/>
+              </TouchableOpacity>
+            })
             
             <TouchableOpacity style = {styles.btn}  onPress={toggleCameraFacing}>
               <Image 
@@ -73,6 +82,7 @@ export default function App() {
                 source={require('../images/change.png')}/>
             </TouchableOpacity>
           </View>
+
         </View>
       </CameraView>
     </View>
