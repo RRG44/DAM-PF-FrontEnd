@@ -39,8 +39,8 @@ export const ComponentButtonMain = props => {
     button :
     {
       backgroundColor: props.backgroundColor ? props.backgroundColor : "#fff",
-      width: props.width ? props.width : 300,
-      height: props.height ? props.height : 300,
+      width: props.width ? props.width : 250,
+      height: props.height ? props.height : 250,
       margin: props.margin ? props.margin : 15,
       borderRadius: 5,
       borderWidth: 1,
@@ -53,13 +53,20 @@ export const ComponentButtonMain = props => {
       fontSize: props.fontSize ? props.fontSize : 16,
       color: props.color ? props.color : 'black',
       padding: props.padding ? props.padding : 10,
-    }
+      fontWeight: props.fontWeight ? props. fontWeight: '600',
+    },
+    image:
+    {
+      height: 130, 
+      width: 130,
+      margin: 15,
+    },
   }); 
 
   return (
-    <TouchableOpacity style = {styles.button}>
+    <TouchableOpacity style = {styles.button} onPress={props.onPress}>
       <Image 
-        style = {{height: 100, width: 100}}
+        style = {styles.image}
         source={img}/>
       <Text style= {styles.text}>{text}</Text>
     </TouchableOpacity>

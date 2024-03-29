@@ -42,7 +42,7 @@ const App = () => {
         <Drawer.Screen name="Academy" component={Academy} />
           {/* This screens are not shown in drawer, but must be navigable  */}
         <Drawer.Screen name="Results" component={UrlResults} options={{ drawerLabel: () => null }}/>
-        <Drawer.Screen name="Camera" component={Camera} options={{ drawerLabel: () => null }}/>
+        <Drawer.Screen name="Camera" component={Camera} options={{ drawerLabel: () => null, headerShown: false }}/>
 
       </Drawer.Navigator>
     </NavigationContainer>
