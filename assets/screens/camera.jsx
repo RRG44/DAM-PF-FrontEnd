@@ -1,6 +1,8 @@
 import { CameraView, useCameraPermissions, Camera } from 'expo-camera/next';
 import { useEffect, useState } from 'react';
 import { Button, StyleSheet, Text, TouchableOpacity, Alert, View, Image, BackHandler } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import validator from 'validator';
 
 export default function App({navigation}) {
   const [facing, setFacing] = useState('back');
@@ -8,12 +10,12 @@ export default function App({navigation}) {
   const [qrDetected, setQrDetected] = useState(false);
   const [torch, setTorch] = useState(false)
 
-  useEffect(() => {
-    (async () => {
-      await requestPermission();
-      permission.canAskAgain = true
-    })();
-  }, []);
+  // useEffect(() => {
+  //   (async () => {
+  //     await requestPermission();
+  //     permission.canAskAgain = true
+  //   })();
+  // }, []);
 
   useEffect(() => {
     const backHandler = BackHandler.addEventListener('hardwareBackPress', () => {
@@ -21,7 +23,7 @@ export default function App({navigation}) {
       return true;
     });
 
-    return () => BackHandler.remove(); // Cleanup on unmount
+    return () => BackHandler.remove; // Cleanup on unmount
   }, [navigation]);
 
   function toggleCameraFacing() {
@@ -29,7 +31,7 @@ export default function App({navigation}) {
   }
 
   function readQr (url) {
-    if (!qrDetected) {
+    if (!qrDetected && isValidURL(url.data)) {
       setQrDetected(true);
       Alert.alert('QR',  'url: '+ url.data, [
         {
@@ -39,7 +41,11 @@ export default function App({navigation}) {
         }, 
         {
           text: 'Continue',
-          onPress: () => {setQrDetected(false)}
+          onPress: () => {
+            navigation.navigate('Results', {
+              url : url.data
+            });
+            setQrDetected(false)}
         }], {cancelable: false})
     }
   };
@@ -52,8 +58,16 @@ export default function App({navigation}) {
     navigation.navigate('Scan Url')
   };
 
+  function isValidURL(url){
+
+    if (!validator.isURL(url,{ require_valid_protocol : true, protocols: ['http','https','ftp']})){
+      return false;
+    }
+    return true;
+  };
+
   return (
-    <View style = {{height : '100%'}}>
+    <SafeAreaView style = {styles.safeArea}>
       <CameraView 
         style = {styles.camera} 
         enableTorch = {torch} 
@@ -65,7 +79,7 @@ export default function App({navigation}) {
 >
         <View style = {styles.cameraContainer}>
 
-          <View style = {{alignItems: 'center', justifyContent: 'space-between', flexDirection: 'row', width: '85%', marginTop: '15%'}}>
+          <View style = {styles.btnContainer}>
             <TouchableOpacity style = {[styles.btn, {width: 60, height: 60}]}  onPress={goBack}>
               <Image 
                 style = {[styles.btnImg, {width: 30, height: 30}]}
@@ -76,7 +90,7 @@ export default function App({navigation}) {
           <View>
           </View>
 
-          <View style = {{alignItems: 'center', justifyContent: 'space-between', flexDirection: 'row', width: '85%'}}>
+          <View style = {styles.btnContainer}>
             
             <TouchableOpacity style = {styles.btn}  onPress={changeTorchState}>
               <Image 
@@ -94,7 +108,7 @@ export default function App({navigation}) {
 
         </View>
       </CameraView>
-    </View>
+    </SafeAreaView>
   );
 }
 
@@ -108,17 +122,20 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderRadius: 100,
   },
+  safeArea:
+  {
+    flex: 1,
+    backgroundColor : '#fff'    
+  },
   cameraContainer:
   {
-    height: '95%',
-    width: '100%',
+    flex: 1,
     alignItems: 'center',
     justifyContent: 'space-between',
   },
   camera:
   {
-    height: '100%',
-    height: '100%',
+    flex: 1,
   },
   qrImg:
   {
@@ -130,5 +147,13 @@ const styles = StyleSheet.create({
     width: 50,
     height: 50,
     tintColor: 'white'
-  }
+  },
+  btnContainer:
+  {
+    alignItems: 'center', 
+    justifyContent: 'space-between', 
+    flexDirection: 'row', 
+    width: '85%', 
+    marginVertical: 30,
+  },
 });

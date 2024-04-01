@@ -1,22 +1,30 @@
 import { useEffect, useState } from 'react';
-import { Button, StyleSheet, Text, TouchableOpacity, Alert, View } from 'react-native';
+import { Button, StyleSheet, Text, TouchableOpacity, Alert, View, SafeAreaView } from 'react-native';
 
 
-export default function App(){
+export default function App({route, navigation}){
+
+  const {url} = route.params
+
   return (
-    <View style = {styles.mainContainer}>
-      <Text>Here goes the url scan result</Text>
-    </View>
+    <SafeAreaView style = {styles.safeArea}>
+      <View style = {styles.mainContainer}>
+        <Text>Here goes URL RESULTS: {url}</Text>
+      </View>
+    </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
+  safeArea:
+  {
+    flex: 1,
+    backgroundColor : '#fff'    
+  },
   mainContainer :
   {
-    width : '100%',
-    height : '100%',
+    flex: 1,
     alignItems : 'center',
     justifyContent : 'center',
-    backgroundColor : '#fff'
   },
 });

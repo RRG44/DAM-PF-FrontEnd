@@ -24,7 +24,7 @@ export const ComponentButton = props => {
   }); 
 
   return (
-    <TouchableOpacity style = {styles.button}>
+    <TouchableOpacity style = {styles.button} onPress={props.onPress}>
         <Text style= {styles.text}>{text}</Text>
     </TouchableOpacity>
   );

@@ -1,22 +1,27 @@
 import { useEffect, useState } from 'react';
-import { Button, StyleSheet, Text, TouchableOpacity, Alert, View } from 'react-native';
+import { Button, StyleSheet, Text, TouchableOpacity, Alert, View, SafeAreaView } from 'react-native';
 
 
 export default function App(){
   return (
-    <View style = {styles.mainContainer}>
-      <Text>Here goes the Clean EXIF screen</Text>
-    </View>
+    <SafeAreaView style = {styles.safeArea}>
+      <View style = {styles.mainContainer}>
+        <Text>Here goes CLEAN EXIF</Text>
+      </View>
+    </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
+  safeArea:
+  {
+    flex: 1,
+    backgroundColor : '#fff'    
+  },
   mainContainer :
   {
-    width : '100%',
-    height : '100%',
+    flex: 1,
     alignItems : 'center',
     justifyContent : 'center',
-    backgroundColor : '#fff'
   },
 });

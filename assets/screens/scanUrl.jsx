@@ -1,37 +1,65 @@
 import { useEffect, useState } from 'react';
-import { Button, StyleSheet, Text, TouchableOpacity, Alert, View, TextInput, TouchableWithoutFeedback, Keyboard } from 'react-native';
+import { Button, 
+  StyleSheet, Text, Alert, 
+  View, TextInput, TouchableWithoutFeedback, Keyboard, 
+  SafeAreaView } from 'react-native';
 import { ComponentButton, ComponentButtonMain } from '../components/components';
+import validator from 'validator';
 
 export default function App({navigation}){
 
-  const [url, setUrl] = useState(null);
+  const [url, setUrl] = useState('');
+
+  function isValidURL(){
+
+    if (!validator.isURL(url,{ require_valid_protocol : true, protocols: ['https','http','ftp']})){
+      
+      Alert.alert('Oops...', 'Seems like it\'s not a valid URL');
+      setUrl('');
+    
+    } else {
+
+      navigation.navigate('Results', {
+        url : url
+      });
+      setUrl('');
+    
+    };
+
+  };
 
   return (
     <TouchableWithoutFeedback onPress = {() => Keyboard.dismiss()}>
-      <View style = {styles.mainContainer}>
-        <Text style = {styles.title}>How to search?:</Text>
-        <Text style = {styles.text}>Write a url:</Text>
-        <TextInput
-          style = {styles.input}
-          multiline = {false}
-          maxLength = {60} 
-          placeholder = "Write a valid URL"
-          onChangeText = { text => setUrl(text)}
-          value = {url} 
-        />
-        <ComponentButton text = "Test Url"/>
-        <Text style = {styles.text}>Scan a code with the camera:</Text>
-        <ComponentButtonMain onPress = {() => navigation.navigate('Camera')} text = "Scann a QR code" source = {require('../images/qr.png')}/>
-      </View>
+      <SafeAreaView style = {styles.safeArea}>
+        <View style = {styles.mainContainer}>
+          <Text style = {styles.title}>How to search?:</Text>
+          <Text style = {styles.text}>Write a url:</Text>
+          <TextInput
+            style = {styles.input}
+            multiline = {false}
+            maxLength = {60} 
+            placeholder = "Write a valid URL"
+            onChangeText = { text => setUrl(text)}
+            value = {url} 
+          />
+          <ComponentButton text = "Test Url" onPress = {isValidURL}/>
+          <Text style = {styles.text}>Scan a code with the camera:</Text>
+          <ComponentButtonMain onPress = {() => navigation.navigate('Camera')} text = "Scann a QR code" source = {require('../images/qr.png')}/>
+        </View>
+      </SafeAreaView>
     </TouchableWithoutFeedback>
   );
 };
 
 const styles = StyleSheet.create({
+  safeArea:
+  {
+    flex: 1,
+    backgroundColor : '#fff'    
+  },
   mainContainer :
   {
-    width : '100%',
-    height : '100%',
+    flex: 1,
     alignItems : 'center',
     justifyContent : 'flex-start',
     backgroundColor : '#fff'
@@ -54,7 +82,8 @@ const styles = StyleSheet.create({
   },
   text:
   {
-    fontSize: 16,
+    fontSize: 20,
     margin: 10,
+    fontWeight: '500',
   },
 });
