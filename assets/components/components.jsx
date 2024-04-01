@@ -43,7 +43,7 @@ export const ComponentButtonMain = props => {
       height: props.height ? props.height : 250,
       margin: props.margin ? props.margin : 15,
       borderRadius: 5,
-      borderWidth: 1,
+      borderWidth: 2,
       borderColor: 'black',
       alignItems: 'center',
       justifyContent: 'center',
@@ -57,8 +57,8 @@ export const ComponentButtonMain = props => {
     },
     image:
     {
-      height: 130, 
-      width: 130,
+      height: props.imgHeight ? props.imgHeight : 130, 
+      width: props.imgWidth ? props.imgWidth : 130,
       margin: 15,
     },
   }); 

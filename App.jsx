@@ -29,7 +29,7 @@ const App = () => {
   return (
     
     <NavigationContainer>
-      <Drawer.Navigator initialRouteName = "Home" backBehavior='initialRoute' 
+      <Drawer.Navigator initialRouteName = "Home" 
           screenOptions={{
             headerTitle: () => <LogoTitle />,
             headerTitleAlign: 'center'

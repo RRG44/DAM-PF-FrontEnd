@@ -2,13 +2,22 @@ import { useEffect, useState } from 'react';
 import { Button, 
   StyleSheet, Text, Alert, 
   View, TextInput, TouchableWithoutFeedback, Keyboard, 
-  SafeAreaView } from 'react-native';
+  SafeAreaView, BackHandler } from 'react-native';
 import { ComponentButton, ComponentButtonMain } from '../components/components';
 import validator from 'validator';
 
 export default function App({navigation}){
 
   const [url, setUrl] = useState('');
+
+  useEffect(() => {
+    const backHandler = BackHandler.addEventListener('hardwareBackPress', () => {
+      navigation.navigate('Home');
+      return true;
+    });
+
+    return () => BackHandler.remove; // Cleanup on unmount
+  }, [navigation]);
 
   function isValidURL(){
 

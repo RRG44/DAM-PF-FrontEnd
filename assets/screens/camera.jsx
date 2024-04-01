@@ -5,6 +5,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import validator from 'validator';
 
 export default function App({navigation}) {
+  
   const [facing, setFacing] = useState('back');
   const [permission, requestPermission] = useCameraPermissions(false);
   const [qrDetected, setQrDetected] = useState(false);
