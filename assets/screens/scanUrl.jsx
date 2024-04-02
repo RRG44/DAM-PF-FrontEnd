@@ -10,15 +10,6 @@ export default function App({navigation}){
 
   const [url, setUrl] = useState('');
 
-  useEffect(() => {
-    const backHandler = BackHandler.addEventListener('hardwareBackPress', () => {
-      navigation.navigate('Home');
-      return true;
-    });
-
-    return () => BackHandler.remove; // Cleanup on unmount
-  }, [navigation]);
-
   function isValidURL(){
 
     if (!validator.isURL(url,{ require_valid_protocol : true, protocols: ['https','http','ftp']})){

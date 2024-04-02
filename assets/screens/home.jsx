@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
 import { Button, StyleSheet, Text, TouchableOpacity, Alert, View, SafeAreaView } from 'react-native';
-import { ComponentButtonMain } from '../components/components';
+import { ComponentButtonMain, Title } from '../components/components';
 
 export default function App({navigation}){
   return (
     <SafeAreaView style = {styles.safeArea}>
       <View style = {styles.mainContainer}>
 
-        <Text style = {styles.title}>Home</Text>
+        <Title text = "Home" />
 
         <ComponentButtonMain 
           onPress = {() => navigation.navigate('Scan Url')} 
@@ -52,11 +52,5 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems : 'center',
     justifyContent : 'flex-start',
-  },
-  title:
-  {
-    fontSize: 24,
-    fontWeight: 'bold',
-    margin: 15
   },
 });

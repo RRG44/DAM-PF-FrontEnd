@@ -4,15 +4,6 @@ import { Button, StyleSheet, Text, TouchableOpacity, Alert, View, SafeAreaView, 
 
 export default function App({navigation}){
 
-  useEffect(() => {
-    const backHandler = BackHandler.addEventListener('hardwareBackPress', () => {
-      navigation.navigate('Home');
-      return true;
-    });
-
-    return () => BackHandler.remove; // Cleanup on unmount
-  }, [navigation]);
-
   return (
     <SafeAreaView style = {styles.safeArea}>
       <View style = {styles.mainContainer}>

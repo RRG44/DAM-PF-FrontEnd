@@ -2,7 +2,7 @@ import 'react-native-gesture-handler'; // ! NEEDS TO BE HERE AT THE BEGGINING
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { lightColors, darkColors } from './assets/screens/colors/colorsPalettes.jsx';
-import { useColorScheme, View, Text, StyleSheet, Image } from 'react-native';
+import { useColorScheme, View, Text, Image } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
@@ -29,12 +29,14 @@ const App = () => {
   return (
     
     <NavigationContainer>
-      <Drawer.Navigator initialRouteName = "Home" 
-          screenOptions={{
-            headerTitle: () => <LogoTitle />,
-            headerTitleAlign: 'center'
-          }}
-        >
+      <Drawer.Navigator 
+        initialRouteName = "Home" 
+        backBehavior='initialRouteName'
+        screenOptions={{
+          headerTitle: () => <LogoTitle />,
+          headerTitleAlign: 'center'
+        }}
+      >
 
         <Drawer.Screen name="Home" component={Home} />
         <Drawer.Screen name="Scan Url" component={UrlScan} />

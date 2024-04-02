@@ -1,8 +1,9 @@
 import { CameraView, useCameraPermissions, Camera } from 'expo-camera/next';
-import { useEffect, useState } from 'react';
-import { Button, StyleSheet, Text, TouchableOpacity, Alert, View, Image, BackHandler } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { Button, StyleSheet, Text, TouchableOpacity, Alert, View, Image, BackHandler, } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import validator from 'validator';
+import { useFocusEffect } from '@react-navigation/native';
 
 export default function App({navigation}) {
   
@@ -18,14 +19,17 @@ export default function App({navigation}) {
   //   })();
   // }, []);
 
-  useEffect(() => {
-    const backHandler = BackHandler.addEventListener('hardwareBackPress', () => {
-      navigation.navigate('Scan Url');
-      return true;
-    });
+  useFocusEffect( React.useCallback(() => {
+      const subscription = BackHandler.addEventListener(
+        'hardwareBackPress', () => {
+          navigation.navigate('Scan Url');
+          return true;
+        }
+      );
 
-    return () => BackHandler.remove; // Cleanup on unmount
-  }, [navigation]);
+      return () => subscription.remove();
+    }, [navigation])
+  );
 
   function toggleCameraFacing() {
     setFacing(current => (current === 'back' ? 'front' : 'back'));

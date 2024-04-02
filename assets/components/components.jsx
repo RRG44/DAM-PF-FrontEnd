@@ -1,4 +1,4 @@
-import { StyleSheet, Text, TouchableOpacity, Image, View, TextInput } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, Image, View, TextInput, ScrollView } from 'react-native';
 
 export const ComponentButton = props => {
 
@@ -71,4 +71,56 @@ export const ComponentButtonMain = props => {
       <Text style= {styles.text}>{text}</Text>
     </TouchableOpacity>
   );
+};
+
+export const Title = props => {
+
+  const text = props.text ? props.text : "Text"; 
+
+  const styles = StyleSheet.create({
+    title:
+    {
+      fontSize: props.fontSize ? props.fontSize : 24,
+      fontWeight: props.fontWeight ? props.fontWeight : 'bold',
+      margin: props.margin ? props.margin : 15
+    },
+  });
+
+  return (
+    <Text style = {styles.title}>{text}</Text>
+  );
+};
+
+export const ComponentResultsContainer = props => {
+
+  const text = props.text ? props.text : "Text";
+
+  const styles = props.style ? props.style : StyleSheet.create({
+    scroll :
+    {
+      backgroundColor: props.backgroundColor ? props.backgroundColor : "#fff",
+      width: props.width ? props.width : 350,
+      height: props.height ? props.height : 450,
+      margin: props.margin ? props.margin : 15,
+      borderRadius: 5,
+      borderWidth: 2,
+      borderColor: 'black',
+      // alignItems: 'center',
+      // justifyContent: 'center',
+    },
+    text:
+    {
+      fontSize: props.fontSize ? props.fontSize : 16,
+      color: props.color ? props.color : 'black',
+      padding: props.padding ? props.padding : 15,
+      fontWeight: props.fontWeight ? props. fontWeight: 'normal',
+    },
+  }); 
+
+  return (
+    <ScrollView style = {styles.scroll} persistentScrollbar={true}>
+      <Text style= {styles.text}>{text}</Text>
+    </ScrollView>
+  );
+
 };
