@@ -1,5 +1,6 @@
 export const darkColors = {
     primary: '#00132E',
+    secondary: '#FFFFFF',
     font: '#FFFFFF',
     lightblue: '#3871B3',
     darkblue: '#333A91',
@@ -10,6 +11,7 @@ export const darkColors = {
 };
 export const lightColors = {
     primary: '#FFFFFF',
+    secondary: '#000000',
     font: '#000000',
     lightblue: '#50A0FF',
     darkblue: '#5863F8',
