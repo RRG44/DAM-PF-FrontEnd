@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { Button, StyleSheet, Text, TouchableOpacity, Alert, View, SafeAreaView, BackHandler } from 'react-native';
-import { ComponentResultsContainer, ComponentButton, Title } from '../components/components'; 
+import { StyleSheet, Text, TouchableOpacity, Alert, View, SafeAreaView, BackHandler, useColorScheme } from 'react-native';
 import { useFocusEffect } from '@react-navigation/native';
 import { btoa } from 'react-native-quick-base64';
+import { ResultsContainer, Button, Title, Subtitle} from '../components/index.jsx';
+import { lightColors, darkColors } from './colors/colorsPalettes.jsx';
 
 export default function App({route, navigation}){
+  const colorScheme = useColorScheme();
+  const palette = colorScheme === 'dark' ? darkColors : lightColors;
 
   const [urlInfo, setUrlInfo] = useState('');
 
@@ -1447,28 +1450,28 @@ export default function App({route, navigation}){
 
   }, [route.params] );
 
+  const styles = StyleSheet.create({
+    safeArea:{
+      display: 'flex',
+      flex: 1,
+      backgroundColor: palette.primary,
+      width: '100%',
+    },
+    mainContainer:{
+      width: '85%',
+      alignSelf: 'center',
+    }
+  });
+
   return (
-    <SafeAreaView style = {styles.safeArea}>
+    <View style = {styles.safeArea}>
       <View style = {styles.mainContainer}>
-        <Title text = "Results" />
-        <ComponentResultsContainer text = {urlInfo} />
-        <ComponentButton text = "Go back" onPress = {goBack}/>
-        <ComponentButton text = "Visit site under my risk" />
+        <Title text = "Scan URL" palette = {palette}/>
+        <Subtitle text = "Results:" palette = {palette}/>
+        <ResultsContainer text = {urlInfo} palette={palette}/>
+        <Button text = "Go Back" onPress = {goBack} palette={palette} marginBottom={20} color={palette.darkblue}/>
+        <Button text = "Visit Site Under My Risk" palette={palette} color={palette.orange}/>
       </View>
-    </SafeAreaView>
+    </View>
   );
 };
-
-const styles = StyleSheet.create({
-  safeArea:
-  {
-    flex: 1,
-    backgroundColor : '#fff'    
-  },
-  mainContainer :
-  {
-    width: '100%',
-    alignItems : 'center',
-    justifyContent : 'center',
-  },
-});
