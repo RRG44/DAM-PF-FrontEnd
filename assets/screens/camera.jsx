@@ -7,17 +7,8 @@ import { useFocusEffect } from '@react-navigation/native';
 
 export default function App({navigation}) {
   
-  const [facing, setFacing] = useState('back');
-  const [permission, requestPermission] = useCameraPermissions(false);
   const [qrDetected, setQrDetected] = useState(false);
   const [torch, setTorch] = useState(false)
-
-  // useEffect(() => {
-  //   (async () => {
-  //     await requestPermission();
-  //     permission.canAskAgain = true
-  //   })();
-  // }, []);
 
   useFocusEffect( React.useCallback(() => {
       const subscription = BackHandler.addEventListener(
@@ -31,9 +22,6 @@ export default function App({navigation}) {
     }, [navigation])
   );
 
-  function toggleCameraFacing() {
-    setFacing(current => (current === 'back' ? 'front' : 'back'));
-  }
 
   function readQr (url) {
     if (!qrDetected && isValidURL(url.data)) {
@@ -76,7 +64,7 @@ export default function App({navigation}) {
       <CameraView 
         style = {styles.camera} 
         enableTorch = {torch} 
-        facing={facing}
+        facing={'back'}
         onBarcodeScanned={(BarCodeScanningResult)=> readQr(BarCodeScanningResult)}
         barcodeScannerSettings={{
           barcodeTypes: ["qr"],
@@ -95,20 +83,14 @@ export default function App({navigation}) {
           <View>
           </View>
 
-          <View style = {styles.btnContainer}>
+          <View style = {[styles.btnContainer, {justifyContent: 'center'}]}>
             
             <TouchableOpacity style = {styles.btn}  onPress={changeTorchState}>
               <Image 
                 style = {styles.btnImg}
                 source={torch ? require('../images/bulb-off.png') : require('../images/bulb-on.png')}/>
             </TouchableOpacity>
-            
-            
-            <TouchableOpacity style = {styles.btn}  onPress={toggleCameraFacing}>
-              <Image 
-                style = {styles.btnImg}
-                source={require('../images/change.png')}/>
-            </TouchableOpacity>
+
           </View>
 
         </View>

@@ -1,3 +1,4 @@
+import 'react-native-gesture-handler'; // ! NEEDS TO BE HERE AT THE BEGGINING DO NOT MOVE OR DELETE!!!!!! 😡
 import React, { useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { lightColors, darkColors } from './assets/screens/colors/colorsPalettes.jsx';
@@ -5,11 +6,8 @@ import { useColorScheme, View, Text, Image, Alert, Linking } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import { Home, UrlResults, UrlScan, Academy, CleanExif } from './assets/screens/index.jsx';
-
-                                      //npm install expo-permissions --unsafe-perm
-                                      //expo install expo-permissions
-import { Camera } from 'expo-camera'; // expo install camare
+import { Home, Camera, UrlResults, UrlScan, Academy, CleanExif } from './assets/screens/index.jsx';
+import { useCameraPermissions } from 'expo-camera/next.js';
 import * as MediaLibrary from 'expo-media-library'; //npm install expo-media-library
 
 const Stack = createNativeStackNavigator();
@@ -26,46 +24,25 @@ const LogoTitle = () => {
   );
 }; 
 
-
 const requestPermissionCam = async () => {
   try {
-      let status = 'denied'; // Inicializamos el estado como denegado para que entre en el ciclo de solicitud
-      //while (status !== 'granted') {
-        const { status: currentStatus } = await Camera.requestCameraPermissionsAsync();
-        status = currentStatus;
-        console.log('Camera permission ',status);
-        //if (status !== 'granted') {
-        //  console.log('Camera permission denied');
-        //  Alert.alert('Permission denied','You need to allow access to use this feature.',
-        //  [{ text: 'OK' },{text: 'Go to Settings',onPress: () => Linking.openSettings(),},]);
-        //} else {
-        //  console.log('Camera permission granted');
-        //} 
-      //}
+      const [permission, requestPermission] = useCameraPermissions();
+      useEffect(() => {( async () => { await requestPermission() } )()},[])
+      console.log('Camera permission ', permission?.status);
     } catch (error) {
       console.error('Error requesting camera permission:', error);
     }
-  };
+};
 
-  const requestPermissionFile = async () => {
-    try {
-        let status = 'denied'; // Inicializamos el estado como denegado para que entre en el ciclo de solicitud
-        //while (status !== 'granted') {
-          const { status: currentStatus } = await MediaLibrary.requestPermissionsAsync();
-          status = currentStatus;
-          console.log('File permission ',status);
-          //if (status !== 'granted') {
-          //  console.log('File permission denied');
-          //  Alert.alert('Permission denied','You need to allow access to use this feature.',
-          //  [{ text: 'OK' },{text: 'Go to Settings',onPress: () => Linking.openSettings(),},]);
-          //} else {
-          //  console.log('File permission granted');
-          //}
-        //}
-      } catch (error) {
-        console.error('Error requesting file permission:', error);
-      }
-    };
+const requestPermissionFile = async () => {
+  try {
+    const [permissionResponse, requestPermission] = MediaLibrary.usePermissions();
+    useEffect(() => {( async () => { await requestPermission() } )()},[])
+    console.log('File permission ', permissionResponse?.status);
+  } catch (error) {
+    console.error('Error requesting file permission:', error);
+  }
+};
 
 
 const App = () => {
