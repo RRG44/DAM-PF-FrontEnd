@@ -31,7 +31,7 @@ const CleanEXIF = ({ navigation }) => {
     return unsubscribe;
   }, [navigation]);
 
-  const server = "http://192.168.100.33:8000";
+  const server = "http://148.220.212.218:8000";
 
   // Event handlers
   const [seeingExif, setSeeingExif] = useState(false);

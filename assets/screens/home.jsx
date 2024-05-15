@@ -38,7 +38,7 @@ const Home = ({navigation}) => {
         <Subtitle palette={palette} text="Services :"/>
         <ButtonMain palette={palette} text="Scan URL" source={QR} onPress={() => navigation.navigate('Scan Url')}/>
         <ButtonMain palette={palette} text="Clean EXIF" source={Img} onPress={() => navigation.navigate('Clean Exif')}/>
-        <ButtonMain palette={palette} text="Academy" source={Academy}/>
+        <ButtonMain palette={palette} text="Academy" source={Academy} onPress={() => navigation.navigate('Academy')}/>
       </ScrollView>
     </View>
   );
