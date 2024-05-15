@@ -1,56 +1,47 @@
-import { useEffect, useState } from 'react';
-import { Button, StyleSheet, Text, TouchableOpacity, Alert, View, SafeAreaView } from 'react-native';
-import { ComponentButtonMain, Title } from '../components/components';
+import React from 'react';
+import {StyleSheet, View, useColorScheme, ScrollView} from 'react-native';
+import { lightColors, darkColors } from './colors/colorsPalettes.jsx';
+import { Subtitle, Title, ButtonMain} from '../components/index.jsx';
 
-export default function App({navigation}){
+import AcademyLight from '../images/light/Academy.png';
+import AcademyDark from '../images/dark/Academy.png';
+import ImgLight from '../images/light/Img.png';
+import ImgDark from '../images/dark/Img.png';
+import QRLight from '../images/light/QR.png';
+import QRDark from '../images/dark/QR.png';
+
+const Home = ({navigation}) => {
+  const colorScheme = useColorScheme();
+  const palette = colorScheme === 'dark' ? darkColors : lightColors;
+
+  const Academy = colorScheme === 'dark' ? AcademyDark : AcademyLight;
+  const Img = colorScheme === 'dark' ? ImgDark : ImgLight;
+  const QR = colorScheme === 'dark' ? QRDark : QRLight;
+
+  const styles = StyleSheet.create({
+    container:{
+      display: 'flex',
+      flex: 1,
+      backgroundColor: palette.primary,
+      width: '100%',
+    },
+    content:{
+      width: '85%',
+      alignSelf: 'center',
+    }
+  });
+
   return (
-    <SafeAreaView style = {styles.safeArea}>
-      <View style = {styles.mainContainer}>
-
-        <Title text = "Home" />
-
-        <ComponentButtonMain 
-          onPress = {() => navigation.navigate('Scan Url')} 
-          text = "Scann a URL"
-          width = {300}
-          height = {180}
-          imgHeight = {90}
-          imgWidth = {90}
-          source = {require('../images/qr.png')}/>
-
-        <ComponentButtonMain 
-          onPress = {() => navigation.navigate('Clean Exif')} 
-          text = "Clean Exif"
-          width = {300}
-          height = {180}
-          imgHeight = {90}
-          imgWidth = {90}
-          source = {require('../images/exif.png')}/>
-
-        <ComponentButtonMain 
-          onPress = {() => navigation.navigate('Academy')} 
-          text = "Academy"
-          width = {300}
-          height = {180}
-          imgHeight = {90}
-          imgWidth = {90}
-          source = {require('../images/academy.png')}/>
-
-      </View>
-    </SafeAreaView>
+    <View style={styles.container}>
+      <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
+        <Title palette={palette} text="Home"/>
+        <Subtitle palette={palette} text="Services :"/>
+        <ButtonMain palette={palette} text="Scan URL" source={QR} onPress={() => navigation.navigate('Scan Url')}/>
+        <ButtonMain palette={palette} text="Clean EXIF" source={Img} onPress={() => navigation.navigate('Clean Exif')}/>
+        <ButtonMain palette={palette} text="Academy" source={Academy}/>
+      </ScrollView>
+    </View>
   );
-};
+}
 
-const styles = StyleSheet.create({
-  safeArea:
-  {
-    flex: 1,
-    backgroundColor : '#fff'    
-  },
-  mainContainer :
-  {
-    flex: 1,
-    alignItems : 'center',
-    justifyContent : 'flex-start',
-  },
-});
+export default Home;
