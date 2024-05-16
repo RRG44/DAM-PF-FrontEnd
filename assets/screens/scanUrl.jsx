@@ -44,7 +44,7 @@ export default function App({navigation}){
           />
           <ComponentButton text = "Test Url" onPress = {isValidURL}/>
           <Text style = {styles.text}>Scan a code with the camera:</Text>
-          <ComponentButtonMain onPress = {() => navigation.navigate('Camera')} text = "Scann a QR code" source = {require('../images/qr.png')}/>
+          <ComponentButtonMain onPress = {() => navigation.navigate('Camera')} text = "Scan a QR code" source = {require('../images/qr.png')}/>
         </View>
       </SafeAreaView>
     </TouchableWithoutFeedback>
