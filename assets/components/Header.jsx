@@ -18,12 +18,12 @@ const Header = (props) => {
     },
     Slogo: {
       resizeMode: "contain",
-      height: 40,
-      width: 40,
+      height: 34,
+      width: 34,
     },
     Slogotext: {
       fontWeight: "bold",
-      fontSize: 30,
+      fontSize: 20,
       color: props.palette.font,
     },
   });

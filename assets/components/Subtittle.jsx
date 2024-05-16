@@ -9,11 +9,10 @@ const Subtitle = (props) => {
         display: "flex",
         width: "100%",
         backgroundColor: props.palette.primary,
-        marginBottom: 20,
-        marginTop: 10,
+        marginVertical: 10,
       },
       titletext: {
-        fontSize: props.size ? props.size : 22,
+        fontSize: props.fontSize ? props.fontSize : 20,
         fontWeight: "500",
         color: props.palette.font,
       },

@@ -11,12 +11,11 @@ const Button = (props) => {
           backgroundColor: props.color ? props.color : "#5863f8",
           width: props.width ? props.width : '100%',
           height: props.height ? props.height : 55,
-          margin: props.margin ? props.margin : 0,
+          marginVertical: props.margin ? props.margin : 10,
           borderRadius: 5,
           alignItems: "center",
           justifyContent: "center",
           display: "flex",
-          marginBottom: props.marginBottom ? props.marginBottom : 0,
         },
         text: {
           fontSize: props.fontSize ? props.fontSize : 20,

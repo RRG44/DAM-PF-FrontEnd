@@ -11,8 +11,7 @@ const ButtonMain = (props) => {
         button: {
           width: props.width ? props.width : "100%",
           height: props.height ? props.height : 180,
-          marginVertical: props.margin ? props.margin : 0,
-          marginBottom: props.marginBottom ? props.marginBottom : 30,
+          marginVertical: props.marginVertical ? props.marginVertical : 10,
           borderRadius: 5,
           borderWidth: 2,
           borderColor: "black",
@@ -22,6 +21,7 @@ const ButtonMain = (props) => {
           borderColor: props.palette.secondary
             ? props.palette.secondary
             : "black",
+          
         },
         text: {
           fontSize: props.fontSize ? props.fontSize : 20,
@@ -31,10 +31,11 @@ const ButtonMain = (props) => {
           marginTop: props.marginTop ? props.marginTop : 10,
         },
         image: {
-          height: props.imgHeight ? props.imgHeight : 110,
-          width: props.imgWidth ? props.imgWidth : 110,
-          margin: props.imgMargin ? props.imgMargin : 0,
+          height: props.imgHeight ? props.imgHeight : 100,
+          width: props.imgWidth ? props.imgWidth : 100,
+          marginVertical: props.imgMargin ? props.imgMargin : 10,
           resizeMode: "contain",
+          tintColor: props.palette.secondary
         },
       });
 

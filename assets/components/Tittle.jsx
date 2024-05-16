@@ -9,10 +9,10 @@ const Title = (props) => {
       display: "flex",
       width: "100%",
       alignItems: "center",
-      marginTop: 10,
+      marginVertical: 10,
     },
     titletext: {
-      fontSize: props.fontSize ? props.fontSize : 36,
+      fontSize: props.fontSize ? props.fontSize : 32,
       fontWeight: props.fontWeight ? props.fontWeight : "bold",
       color: props.palette.font ? props.palette.font : "black",
     },

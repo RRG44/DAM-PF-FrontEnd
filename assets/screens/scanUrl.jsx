@@ -3,13 +3,11 @@ import { StyleSheet, Text, Alert, View, TextInput, TouchableWithoutFeedback, Key
 import { Button, ButtonMain, Title, Subtitle } from "../components/index.jsx";
 import validator from "validator";
 import { lightColors, darkColors } from "./colors/colorsPalettes.jsx";
-import iconlight from "../images/light/QR.png";
-import icondark from "../images/dark/QR.png";
+import iconQR from "../images/qr.png"
 
 export default function App({ navigation }) {
   const colorScheme = useColorScheme();
   const palette = colorScheme === "dark" ? darkColors : lightColors;
-  const Img = colorScheme === "dark" ? icondark : iconlight;
 
   const [url, setUrl] = useState("");
 
@@ -40,6 +38,7 @@ export default function App({ navigation }) {
     container: {
       width: '85%',
       alignSelf: 'center',
+      alignItems: 'center'
     },
     input: {
       width: "100%",
@@ -49,20 +48,19 @@ export default function App({ navigation }) {
       borderRadius: 5,
       fontSize: 16,
       borderColor: palette.secondary,
-      marginBottom: 20,
+      marginVertical: 20,
       color: palette.font,
     },
     title: {
-      fontSize: 26,
+      fontSize: 20,
       fontWeight: "bold",
-      margin: 10,
       color: palette.secondary,
       textAlign: "center",
-      marginBottom: 40,
+      
     },
     text: {
       fontSize: 20,
-      margin: 10,
+      // margin: 10,
       fontWeight: "500",
     },
   });
@@ -72,8 +70,7 @@ export default function App({ navigation }) {
       <View style={styles.mainContainer}>
         <View style={styles.container}>
           <Title palette={palette} text="Scan URL"/>
-          <Text style={styles.title}>How to search?</Text>
-          <Subtitle palette={palette} text="Write an URL:" size={20}/>
+          <Subtitle palette={palette} text="Write an URL:" />
           <TextInput
             style={styles.input}
             multiline={false}
@@ -83,14 +80,15 @@ export default function App({ navigation }) {
             value={url}
             placeholderTextColor={palette.font}
           />
-          <Button text="Test Url" onPress={isValidURL} palette={palette} marginBottom={40}/>
-          <Subtitle palette={palette} text="Scan a QR code with the camera:" size={20}/>
+          <Button text="Test Url" onPress={isValidURL} palette={palette}/>
+          <Subtitle palette={palette} text="Scan a QR code with the camera:" />
           <ButtonMain
             palette={palette}
             onPress={() => navigation.navigate("Camera")}
             text="Scann a QR code"
-            source={Img}
-            height={220}
+            source={iconQR}
+            height={250}
+            width={250}
           />
         </View>
       </View>
