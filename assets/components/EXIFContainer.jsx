@@ -20,6 +20,7 @@ const EXIFContainer = (props) => {
       width: props.imgwidht,
       height: props.imgheight,
       resizeMode: "contain",
+      tintColor: props.tintColor ? props.tintColor : null,
     },
     textError: {
       color: props.palette.secondary,
