@@ -87,6 +87,15 @@ const App = () => {
                 },
                 headerTintColor: palette.secondary,
                 headerTitleAlign: "center",
+                
+                drawerStyle: {
+                  backgroundColor: palette.primary,
+                  width: 240,
+                },
+                // drawerActiveTintColor: palette.secondary,
+                drawerInactiveTintColor: palette.secondary,
+                // drawerActiveBackgroundColor: '#50A0FF66',
+                drawerAllowFontScaling: true,
               }}
             >
               <Drawer.Screen name="Home" component={Home} />
@@ -94,8 +103,8 @@ const App = () => {
               <Drawer.Screen name="Clean Exif" component={CleanExif} />
               <Drawer.Screen name="Academy" component={Academy} />
               {/* This screens are not shown in drawer, but must be navigable  */}
-              <Drawer.Screen name="Results" component={UrlResults} options={{ drawerLabel: () => null }}/>
-              <Drawer.Screen name="Camera" component={Camera} options={{ drawerLabel: () => null, headerShown: false }}/>
+              <Drawer.Screen name="Results" component={UrlResults} options={{ drawerLabel: () => null, drawerItemStyle: { display: 'none' } }}/>
+              <Drawer.Screen name="Camera" component={Camera} options={{ drawerLabel: () => null, drawerItemStyle: { display: 'none' } }}/>
             </Drawer.Navigator>
           </NavigationContainer>
         </>

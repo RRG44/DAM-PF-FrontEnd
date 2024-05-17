@@ -5,7 +5,7 @@ import { ScrollView } from "react-native-gesture-handler";
 const EXIFContainer = (props) => {
   const styles = StyleSheet.create({
     container: {
-      borderWidth: 1,
+      borderWidth: 2,
       borderColor: props.palette.secondary,
       borderRadius: 5,
       height: 500,

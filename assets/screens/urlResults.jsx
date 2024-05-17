@@ -4,6 +4,8 @@ import { useFocusEffect } from '@react-navigation/native';
 import { btoa } from 'react-native-quick-base64';
 import { ResultsContainer, Button, Title, Subtitle} from '../components/index.jsx';
 import { lightColors, darkColors } from './colors/colorsPalettes.jsx';
+import { FlatList, ScrollView } from 'react-native-gesture-handler';
+import * as Linking from 'expo-linking';
 
 export default function App({route, navigation}){
   const colorScheme = useColorScheme();
@@ -13,6 +15,15 @@ export default function App({route, navigation}){
 
   const goBack = () => {
     navigation.navigate('Scan Url')
+  };
+
+  const OpenUrlButton = ( ) => {
+    const {url} = route.params;
+    if (url) {
+      Linking.openURL(url).catch((err) => console.error("Couldn't load page", err));
+    } else {
+      console.error("No URL provided");
+    }
   };
 
   useFocusEffect( React.useCallback(() => {
@@ -1470,7 +1481,7 @@ export default function App({route, navigation}){
         <Subtitle text = "Results:" palette = {palette}/>
         <ResultsContainer text = {urlInfo} palette={palette}/>
         <Button text = "Go Back" onPress = {goBack} palette={palette} marginBottom={20} color={palette.darkblue}/>
-        <Button text = "Visit Site Under My Risk" palette={palette} color={palette.orange}/>
+        <Button text = "Visit Site Under My Risk" palette={palette} color={palette.orange} onPress={OpenUrlButton}/>
       </View>
     </View>
   );

@@ -22,7 +22,6 @@ import icondark from "../images/dark/Img.png";
 import giflight from "../images/light/LoadingLight.gif";
 import gifdark from "../images/dark/LoadingDark.gif";
 
-
 const CleanEXIF = ({ navigation }) => {
   useEffect(() => {
     const unsubscribe = navigation.addListener("focus", () => {
@@ -53,7 +52,7 @@ const CleanEXIF = ({ navigation }) => {
 
   const colorScheme = useColorScheme();
   const palette = colorScheme === "dark" ? darkColors : lightColors;
-  const Img = colorScheme === "dark" ? icondark : iconlight;
+  const Img = colorScheme === "dark" ? icondark : iconlight ;
   const gif = colorScheme === "dark" ? gifdark : giflight;
 
   const styles = StyleSheet.create({

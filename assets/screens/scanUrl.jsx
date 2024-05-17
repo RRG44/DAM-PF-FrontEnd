@@ -85,7 +85,7 @@ export default function App({ navigation }) {
           <ButtonMain
             palette={palette}
             onPress={() => navigation.navigate("Camera")}
-            text="Scann a QR code"
+            text="Scan a QR code"
             source={iconQR}
             height={250}
             width={250}

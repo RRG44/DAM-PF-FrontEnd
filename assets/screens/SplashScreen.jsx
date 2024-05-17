@@ -14,7 +14,7 @@ const SplashScreen = ({ palette, colorScheme }) => {
       backgroundColor: palette.primary,
     },
     logo: {
-      width: '90%',
+      width: 250,
       resizeMode: 'contain',
     },
   });

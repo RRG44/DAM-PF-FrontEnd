@@ -9,7 +9,7 @@ const ResultsContainer = (props) => {
     {
       backgroundColor: props.palette.primary ? props.palette.primary : "#fff",
       width: props.width ? props.width : "100%",
-      height: props.height ? props.height : 450,
+      height: props.height ? props.height : 400,
       margin: props.margin ? props.margin : 0,
       marginBottom: 20,
       borderRadius: 5,
