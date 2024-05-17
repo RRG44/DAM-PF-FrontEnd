@@ -17,8 +17,7 @@ import {
 import * as ImagePicker from "expo-image-picker";
 import * as MediaLibrary from "expo-media-library";
 import * as FileSystem from "expo-file-system";
-import iconlight from "../images/light/Img.png";
-import icondark from "../images/dark/Img.png";
+import iconExif from "../images/exif.png";
 import giflight from "../images/light/LoadingLight.gif";
 import gifdark from "../images/dark/LoadingDark.gif";
 
@@ -52,7 +51,6 @@ const CleanEXIF = ({ navigation }) => {
 
   const colorScheme = useColorScheme();
   const palette = colorScheme === "dark" ? darkColors : lightColors;
-  const Img = colorScheme === "dark" ? icondark : iconlight ;
   const gif = colorScheme === "dark" ? gifdark : giflight;
 
   const styles = StyleSheet.create({
@@ -225,7 +223,7 @@ const CleanEXIF = ({ navigation }) => {
 
   let source = null;
   if (!isImageLoaded) {
-    source = Img;
+    source = iconExif;
   } else if (isImageLoaded && !isImageSended) {
     source = { uri: image };
   } else if (isImageLoaded && isImageSended) {
@@ -264,6 +262,7 @@ const CleanEXIF = ({ navigation }) => {
           errorServerMessage={errorServerMessage}
           seeingExif={seeingExif}
           imageRecivedExif={imageRecivedExif}
+          tintColor={(imgWidhtHeight === 150 && !isImageLoaded) ? palette.secondary : null}
         />
         {!isImageLoaded ? (
           <>
