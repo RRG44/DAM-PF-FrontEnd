@@ -21,6 +21,7 @@ const Detail = ({ route }) => {
       fontWeight: 'bold',
       color: palette.text,
       width: '85%',
+      height:40,
       alignSelf: 'center',
     },
     content: {
@@ -32,7 +33,8 @@ const Detail = ({ route }) => {
       width: '100%',
       alignSelf: 'center',
       top: 20,
-      textAlign: 'justify'
+      textAlign: 'justify',
+      lineHeight: 24,
     },
   });
 
@@ -41,7 +43,7 @@ const Detail = ({ route }) => {
       <Title palette={palette} text="Academy"/>
       <Text style={styles.title}>{title}</Text>
       <View style={styles.content}>
-      <ScrollView contentContainerStyle={{ flexGrow: 1 }} showsVerticalScrollIndicator={false}>
+      <ScrollView contentContainerStyle={{ flexGrow: 1}} showsVerticalScrollIndicator={false}>
         <Text style={styles.alltext}>{content}</Text>
     </ScrollView>
     </View>
