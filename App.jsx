@@ -7,6 +7,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { Home, Camera, UrlResults, UrlScan, Academy, CleanExif, SplashScreen } from "./assets/screens/index.jsx";
+import Detail from './assets/screens/Detail.jsx';
 import { useCameraPermissions } from "expo-camera/next.js";
 import * as MediaLibrary from "expo-media-library"; //npm install expo-media-library
 import { Header } from "./assets/components/index.jsx";
@@ -105,6 +106,7 @@ const App = () => {
               {/* This screens are not shown in drawer, but must be navigable  */}
               <Drawer.Screen name="Results" component={UrlResults} options={{ drawerLabel: () => null, drawerItemStyle: { display: 'none' } }}/>
               <Drawer.Screen name="Camera" component={Camera} options={{ drawerLabel: () => null, drawerItemStyle: { display: 'none' }, headerShown: false }}/>
+              <Drawer.Screen name="Detail" component={Detail} options={{ drawerLabel: () => null,}} />
             </Drawer.Navigator>
           </NavigationContainer>
         </>
