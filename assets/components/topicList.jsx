@@ -6,7 +6,7 @@ const topicList = props => {
   return (
     <FlatList
       data={props.topics}
-      renderItem={({ item }) => <TopicItem topic={item} navigation={props.navigation}/>}
+      renderItem={({ item }) => <TopicItem topic={item} navigation={props.navigation} palette={props.palette}/>}
       keyExtractor={(item) => item.id}
       style={styles.list}
       showsVerticalScrollIndicator={false}
@@ -17,7 +17,8 @@ const topicList = props => {
 
 const styles = StyleSheet.create({
   list: {
-    width: "90%",
+    flex: 1,
+    width: "100%",
     alignSelf: "center",
   },
 });
