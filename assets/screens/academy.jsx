@@ -12,11 +12,18 @@ const App = ({navigation}) => {
   const [filteredTopics, setFilteredTopis] = useState(topics);
 
   const styles = StyleSheet.create({
-    container: {
+    backcontainer: {
       display: 'flex',
       flex: 1,
       backgroundColor: palette.primary,
       width: '100%',
+    },
+    maincontainer: {
+      display: 'flex',
+      flex: 1,
+      backgroundColor: palette.primary,
+      width: '90%',
+      alignSelf: 'center',
     },
     content: {
       width: '85%',
@@ -33,10 +40,12 @@ const App = ({navigation}) => {
   });
 
   return (
-    <View style={styles.container}> 
+    <View style={styles.backcontainer}>
+      <View style={styles.maincontainer}>      
         <Title palette={palette} text="Academy"/>
         <Subtitle palette={palette} text="Index: "/>
-        <TopicList topics={filteredTopics} navigation={navigation}/>
+        <TopicList topics={filteredTopics} navigation={navigation} palette={palette}/>
+      </View> 
     </View>
   );
 };
