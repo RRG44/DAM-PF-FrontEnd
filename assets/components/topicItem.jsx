@@ -6,7 +6,7 @@ const topicItem = props => {
   return (
     <View style={styles.productCard}>
       <View style={styles.text}>
-        <Text style={styles.name}>{props.item.title}</Text>
+        <Text style={styles.name}>{props.topic.title}</Text>
         <TouchableOpacity onPress={() => props.navigation.navigate("Detail")}>
             <Text>Ver</Text><Image source={flecha}/>
         </TouchableOpacity>

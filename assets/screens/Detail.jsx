@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, useColorScheme,ScrollView } from 'react-native';
 import { lightColors, darkColors } from './colors/colorsPalettes.jsx';
-import { Subtittle, Tittle} from '../components/index.jsx';
+import { Subtitle, Title} from '../components/index.jsx';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 const Detail = ({ route, navigation }) => {
@@ -40,7 +40,7 @@ const Detail = ({ route, navigation }) => {
 
   return (
     <View style={styles.container}>
-      <Tittle palette={palette} text="Academy"/>
+      <Title palette={palette} text="Academy"/>
       {/* <Text style={styles.title}>{title}</Text> */}
       <View style={styles.content}>
       <ScrollView contentContainerStyle={{ flexGrow: 1}} showsVerticalScrollIndicator={false}>
