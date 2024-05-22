@@ -13,17 +13,18 @@ export default function App({ navigation }) {
 
   function isValidURL() {
     if (
-      !validator.isURL(url, {
+      validator.isURL(url, {
+        require_protocol: true,
         require_valid_protocol: true,
         protocols: ["https", "http", "ftp"],
       })
     ) {
-      Alert.alert("Oops...", "Seems like it's not a valid URL");
-      setUrl("");
-    } else {
       navigation.navigate("Results", {
         url: url,
       });
+      setUrl("");
+    } else {
+      Alert.alert("Oops...", "Seems like it's not a valid URL. Be sure to include protocols an all info. \nExample: \nhttps://www.example.com");
       setUrl("");
     }
   }

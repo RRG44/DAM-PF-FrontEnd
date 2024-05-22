@@ -12,7 +12,7 @@
     "@react-navigation/drawer": "^6.6.15",
     "@react-navigation/native": "^6.1.15",
     "@react-navigation/native-stack": "^6.9.24",
-    "expo": "^50.0.14",
+    "expo": "50",
     "expo-camera": "~14.1.1",
     "expo-file-system": "^16.0.9",
     "expo-font": "^11.10.3",
