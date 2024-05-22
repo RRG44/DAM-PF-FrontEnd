@@ -20,6 +20,7 @@ import * as FileSystem from "expo-file-system";
 import iconExif from "../images/exif.png";
 import giflight from "../images/light/LoadingLight.gif";
 import gifdark from "../images/dark/LoadingDark.gif";
+import server from "../components/server.js";
 
 const CleanEXIF = ({ navigation }) => {
   useEffect(() => {
@@ -29,7 +30,7 @@ const CleanEXIF = ({ navigation }) => {
     return unsubscribe;
   }, [navigation]);
 
-  const server = "http://148.220.212.218:8000";
+  // const server = "http://148.220.212.218:8000";
 
   // Event handlers
   const [seeingExif, setSeeingExif] = useState(false);
