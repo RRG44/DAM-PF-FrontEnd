@@ -5,7 +5,7 @@ import { Subtitle, Title} from '../components/index.jsx';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 const Detail = ({ route, navigation }) => {
- // const { title, content } = route.params;
+  const { topic } = route.params;
   const colorScheme = useColorScheme();
   const palette = colorScheme === 'dark' ? darkColors : lightColors;
 
@@ -41,10 +41,10 @@ const Detail = ({ route, navigation }) => {
   return (
     <View style={styles.container}>
       <Title palette={palette} text="Academy"/>
-      {/* <Text style={styles.title}>{title}</Text> */}
+      <Text style={styles.title}>{topic.title}</Text>
       <View style={styles.content}>
       <ScrollView contentContainerStyle={{ flexGrow: 1}} showsVerticalScrollIndicator={false}>
-        {/* <Text style={styles.alltext}>{content}</Text> */}
+      <Text style={styles.alltext}>{topic.content}</Text>
     </ScrollView>
     </View>
     </View>
