@@ -45,6 +45,7 @@ const data = [
             +' • Eliminar las cookies del navegador periódicamente \n'
             +' • Cerrar sesión de todos los sitios web cuando dejamos de usarlo, para que esa cookie caduque y ya no pueda ser eliminada \n'
             +' • Usar extensiones en el navegador que bloquean y borran las cookies: Vainilla Cookies Manager, Ghostery, Cookie AutoDelete\n'
+            +'\n\n'
           },
 
     { id: '3', title: 'Malware y tipos de malware', 
@@ -84,6 +85,7 @@ const data = [
             +'• Bloquea la configuración y limita los permisos de las aplicaciones.\n'
             +'• Conoce tus aplicaciones y solo instala aplicaciones oficiales en tiendas de aplicaciones vinculadas verificadas.\n'
             +'• No hagas clic en cualquier enlace. No te apresures y observa tu entorno digital. Las estafas de phishing que cargan malware y virus en tus celulares suelen llegar en correos electrónicos, mensajes de texto o a través de tus círculos de confianza en las redes sociales. \n'
+            +'\n\n'
           },
 
     { id: '4', title: 'OSINT', 
@@ -114,6 +116,7 @@ const data = [
             +'Las técnicas de minería de datos pueden ayudar a realizar análisis de los ataques diarios, correlacionarlos y apoyar los procesos de toma de decisiones para una defensa eficaz, pero también para una reacción rápida. Del mismo modo, OSINT también puede considerarse en este contexto como una fuente de información para rastreos e investigaciones. El análisis digital forense puede incorporar OSINT para complementar las evidencias digitales que deja un incidente.\n\n'
             +'Análisis de opinión y sentimiento social en las redes sociales, es posible recopilar Interacciones, mensajes, intereses y preferencias de los usuarios. extraer conocimiento no explícito. La evidencia acumulada en las redes sociales es de gran alcance y ampliamente ventajoso. Tal recopilación y análisis es aplicada al marketing, las campañas políticas o la gestión de desastres.\n\n'
             +'Cibercrimen y crimen organizado en ellos los datos abiertos son Analizado continuamente y comparado por procesos OSINT para detectar intenciones criminales en una etapa temprana. escenario. Teniendo en cuenta los patrones de los adversarios y las relaciones entre delitos graves se puede proporcionar fuerzas de seguridad la oportunidad de detectar rápidamente\n\n'
+            +'\n\n'
           },
 
     { id: '5', title: 'Ingeniería social', 

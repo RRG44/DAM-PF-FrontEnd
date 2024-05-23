@@ -15,36 +15,38 @@ const Detail = ({ route, navigation }) => {
       flex: 1,
       backgroundColor: palette.primary,
       width: '100%',
+      height:'100%',
     },
     title: {
       fontSize: 24,
-      fontWeight: 'bold',
-      color: palette.text,
-      width: '85%',
+      width: '80%',
       height:40,
       alignSelf: 'center',
     },
     content: {
       width: '85%',
+      height:'100%',
       alignSelf: 'center',
       flexGrow:1,
+      bottom:10,
     },
     alltext: {
-      width: '100%',
+      top:15,
       alignSelf: 'center',
-      top: 20,
       textAlign: 'justify',
+      color: palette.secondary,
       lineHeight: 24,
+      marginBottom:30,
     },
   });
 
   return (
     <View style={styles.container}>
-      <Title palette={palette} text="Academy"/>
-      <Text style={styles.title}>{topic.title}</Text>
+      <Title palette={palette} style={styles.title}  text="Academy"/>
       <View style={styles.content}>
+      <Subtitle palette={palette} text={topic.title}/>
       <ScrollView contentContainerStyle={{ flexGrow: 1}} showsVerticalScrollIndicator={false}>
-      <Text style={styles.alltext}>{topic.content}</Text>
+      <Text palette={palette} style={styles.alltext}>{topic.content}</Text>
     </ScrollView>
     </View>
     </View>
