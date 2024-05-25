@@ -15,7 +15,8 @@ export default function App({route, navigation}){
   const [urlInfo, setUrlInfo] = useState('');
 
   const goBack = () => {
-    navigation.navigate('Scan Url')
+    setUrlInfo('');
+    navigation.navigate('Scan Url');
   };
 
   const OpenUrlButton = ( ) => {
@@ -89,7 +90,7 @@ export default function App({route, navigation}){
     }
 
     const fetchURL = async () => {
-
+      setUrlInfo('');
       try{
         const response = await fetch(`${server}/scan_url_test/${urlB64}`);
         const data = await response.json();
@@ -128,7 +129,7 @@ export default function App({route, navigation}){
       <View style = {styles.mainContainer}>
         <Title text = "Scan URL" palette = {palette}/>
         <Subtitle text = "Results:" palette = {palette}/>
-        <ResultsContainer text = {urlInfo} palette={palette}/>
+        <ResultsContainer text = {urlInfo !== '' ? urlInfo: ''} palette={palette}/>
         <Button text = "Go Back" onPress = {goBack} palette={palette} marginBottom={20} color={palette.darkblue}/>
         <Button text = "Visit Site Under My Risk" palette={palette} color={palette.orange} onPress={OpenUrlButton}/>
       </View>
