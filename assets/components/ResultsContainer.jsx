@@ -1,9 +1,8 @@
 import React from "react";
-import { ScrollView, Text, StyleSheet } from "react-native";
+import { ScrollView, Text, StyleSheet, Image, Appearance, View } from "react-native";
 
 const ResultsContainer = (props) => {
-  const text = props.text ? props.text : "Text";
-
+  const text = props.text ? props.text : '';
   const styles = props.style ? props.style : StyleSheet.create({
     scroll :
     {
@@ -15,21 +14,37 @@ const ResultsContainer = (props) => {
       borderRadius: 5,
       borderWidth: 2,
       borderColor: props.palette.secondary,
-      // alignItems: 'center',
-      // justifyContent: 'center',
     },
     text:
     {
       fontSize: props.fontSize ? props.fontSize : 16,
       color: props.palette.font ? props.palette.font : 'black',
       padding: props.padding ? props.padding : 15,
-      fontWeight: props.fontWeight ? props. fontWeight: 'normal',
+      fontWeight: props.fontWeight ? props.fontWeight: 'normal',
+    },
+    loading:
+    {
+      position: 'relative',
+      alignSelf: 'center',
+      marginTop: props.height ? (props.height/2)-100 : 100,
+    },
+    loadingContainer:
+    {
+      justifyContent: 'center',
+      flex: 1,
+      alignItems: 'center',
     },
   }); 
 
   return (
     <ScrollView style = {styles.scroll} persistentScrollbar={true}>
-      <Text style= {styles.text}>{text}</Text>
+      {text !== '' && <Text style= {styles.text}>{text}</Text>}
+      {text === '' && 
+        <Image 
+          style={styles.loading}
+          source={ Appearance.getColorScheme() == "light" ? require('../images/light/LoadingLight.gif') : require('../images/dark/LoadingDark.gif')}
+        />
+      }
     </ScrollView>
   );
 };
