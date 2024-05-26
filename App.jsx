@@ -23,6 +23,7 @@ const requestPermissionCam = async () => {
       })();
     }, []);
     console.log("Camera permission ", permission?.status);
+    return permission?.status;
   } catch (error) {
     console.error("Error requesting camera permission:", error);
   }
@@ -38,14 +39,31 @@ const requestPermissionFile = async () => {
       })();
     }, []);
     console.log("File permission ", permissionResponse?.status);
+    return permissionResponse?.status
+  } catch (error) {
+    console.error("Error requesting file permission:", error);
+  }
+};
+
+const PermissionAll = async () => {
+  try {
+    const [permissionResponse, requestPermission] =
+      MediaLibrary.usePermissions();
+    useEffect(() => {
+      (async () => {
+        await requestPermission();
+      })();
+    }, []);
+    console.log("File permission ", permissionResponse?.status);
+    return permissionResponse?.status
   } catch (error) {
     console.error("Error requesting file permission:", error);
   }
 };
 
 const App = () => {
-  const permissionCam = requestPermissionCam();
-  const permissionFile = requestPermissionFile();
+  const [cameraPermission, requestCameraPermission] = useCameraPermissions();
+  const [filePermission, requestFilePermission] = MediaLibrary.usePermissions();
   const [appIsReady, setAppIsReady] = useState(false);
   const colorScheme = useColorScheme();
   const palette = colorScheme === "dark" ? darkColors : lightColors;
@@ -54,14 +72,52 @@ const App = () => {
     async function prepare() {
       try {
         await new Promise((resolve) => setTimeout(resolve, 2000));
+
+        const camPermission = cameraPermission?.status === 'granted';
+        const filePermissionStatus = filePermission?.status === 'granted';
+
+        console.log("Camera permission:", cameraPermission?.status);
+        console.log("File permission:", filePermission?.status);
+
+        if (camPermission && filePermissionStatus) {
+          setAppIsReady(true);
+        } else {
+          Alert.alert(
+            "Permisos necesarios",
+            'Necesitas otorgar permisos para continuar. Por favor, ve a la configuración de tu dispositivo y otorga permisos de Cámara y Multimedia.',
+            [{ text: "Ir a configuración", onPress: () => Linking.openSettings() }]
+          );
+        }
       } catch (e) {
         console.warn(e);
-      } finally {
-        setAppIsReady(true);
       }
     }
-    prepare();
-  }, []);
+
+    if (!cameraPermission || cameraPermission.status !== 'granted') {
+      requestCameraPermission();
+    }
+    if (!filePermission || filePermission.status !== 'granted') {
+      requestFilePermission();
+    }
+
+    const intervalId = setInterval(() => {
+      const camPermission = cameraPermission?.status === 'granted';
+      const filePermissionStatus = filePermission?.status === 'granted';
+
+      console.log("Revisando permisos...");
+      console.log("Camera permission:", cameraPermission?.status);
+      console.log("File permission:", filePermission?.status);
+
+      if (camPermission && filePermissionStatus) {
+        setAppIsReady(true);
+        clearInterval(intervalId); // Clear the interval once permissions are granted
+      } else {
+        prepare();
+      }
+    }, 2000);
+
+    return () => clearInterval(intervalId); // Cleanup interval on component unmount
+  }, [cameraPermission, filePermission]);
 
   return (
     <SafeAreaView style={{ backgroundColor: palette.primary, flex: 1 }}>
@@ -92,7 +148,7 @@ const App = () => {
                   backgroundColor: palette.primary,
                   width: 240,
                 },
-                // drawerActiveTintColor: palette.secondary,
+                // drawerActiveTintColor: palette.secondary,zz
                 drawerInactiveTintColor: palette.secondary,
                 // drawerActiveBackgroundColor: '#50A0FF66',
                 drawerAllowFontScaling: true,

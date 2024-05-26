@@ -5,6 +5,11 @@ const data = [
             +'Según Hartel y Thomson (2011), algunos autores consideran cuestionable mantener el término “fotografía” en el contexto de los ciber medios. Estos autores proponen distinguir exclusivamente entre informaciones textuales e informaciones visuales, definiendo el contenido visual como un contenedor que abarca las aportaciones de la fotografía, la ilustración, la infografía, el vídeo y las técnicas de 3D. Según su perspectiva, categorizar la imagen fotográfica como un contenido visual más permite situar los modelos analíticos desarrollados por las ciencias sociales en el eje del estudio teórico del mensaje visual (Freixa, 2013). \n\n'
             +'Como explican algunos autores, los datos EXIF mejor explicados son metadatos habitualmente son denominados “datos sobre los datos”, es decir información de interés que complementa el contenido principal de un documento digital. Las imágenes digitales son almacenadas en una gran variedad de formatos como TIFF, JPEG, PSD o RAW entre otros. Cada formato de imagen tiene distintas reglas de como los distintos formatos de metadatos son almacenados junto al propio archivo que contiene la imagen. Algunos de los distintos contenedores de metadatos para los distintos formatos son: IFDs Exif/TIFF, Adobe XMP e IPTC-IIM. Cada uno de estos contenedores de metadatos tiene un formato propio que indica las propiedades de los metadatos que son almacenadas, el orden y su codificación en el contenedor. En cada contenedor suele haber una subdivisión con criterios semánticos. Estos grupos semánticos se dividen a su vez en propiedades de metadatos individuales. Cada propiedad tiene asociada unos tipos de datos específicos como pueden ser cadenas de caracteres, números o vectores. Las cadenas de copyright pueden ser almacenadas por varios contenedores con similar información, pero posiblemente con una semántica o estructura sutilmente distinta. (Sandoval Orozco et al., 2012).\n\n'
             +'La seguridad de los datos EXIF es algo que tiene en consideración la seguridad digital la manipulación o el uso de estos para investigaciones han llegado a tratos con distintas paginas de internet como lo son las redes social ejemplo de ello en 2016 Facebook queda obligado por sentencia judicial a dejar intactos los metadatos de las fotos que suben los usuarios con el fin de comprobar la autenticidad de las imágenes. Como la mayoría de los celulares inteligentes y ahora también las cámaras están equipadas con funciones GPS, y algunas imágenes incluyen geo etiquetas y direcciones IP, se debería considerar antes esto al publicar imágenes con los metadatos en la web. Si no deseamos mostrar detalles delicados de las fotos se recomienda la eliminación de la información de las imágenes mediante las herramientas EXIF disponibles en varias herramientas como Secure Surf.\n\n'
+            +'\n Bibliografía. \n\n'
+            +'Freixa Pere. (2013). Análisis del contenido fotográfico: Algunas reflexiones sobre la fotografía en los medios digitales. Universitat Pompeu Fabra. \n\n'
+            +'Ana S. David A. et al. (2012). Anomalías en el Seguimiento de Exif en el Analisis Forense de Metadatos de Imagenes de Moviles. Facultad de Informatica, Universidad Complutense de Madrid (UCM). \n\n'
+            +'Digital Guide IONOS. (23 septiembre, 2020). EXIF: visualizar y guardar los metadatos de las imágenes. Recuperado el 5 de mayo de 2024 en https://www.ionos.es/digitalguide/paginas-web/diseno-web/que-son-los-datos-exif/\n\n'
+            +'Laura Cabello Gil. (2017). DATOS DE GEOLOCALIZACIÓN COMO MEDIDA DE INVESTIGACIÓN. AVANCES EN EL SISTEMA JURÍDICO PROCESAL PENAL. Facultad de Derecho, Universidad Nacional De Educación a Distancia (UNED). https://dialnet.unirioja.es/servlet/dctes?codigo=109401\n\n'
             +'\n\n'
           },
 
@@ -45,6 +50,10 @@ const data = [
             +' • Eliminar las cookies del navegador periódicamente \n'
             +' • Cerrar sesión de todos los sitios web cuando dejamos de usarlo, para que esa cookie caduque y ya no pueda ser eliminada \n'
             +' • Usar extensiones en el navegador que bloquean y borran las cookies: Vainilla Cookies Manager, Ghostery, Cookie AutoDelete\n'
+            +'\n Bibliografía. \n\n'
+            +'Kaspersky. (2024). ¿Qué son las cookies?. Recuperado el 6 de mayo de 2024 de https://www.kaspersky.es/resource-center/definitions/cookies\n\n'
+            +'Elena Hernández. (2021). Cumplimiento normativo en el uso de las cookies en la web. Universitat Oberta de Cataluya (UOC). Recuperado el 6 de mayo de 2024 de https://openaccess.uoc.edu/handle/10609/137987\n\n'
+            +'Elena Diaz. (2021). Análisis, gestión y garantización del cumplimiento normativo en el uso de las cookies en la web.  Universitat Oberta de Cataluya (UOC). Recuperado el 6 de mayo de 2024 de https://openaccess.uoc.edu/handle/10609/133667\n\n'
             +'\n\n'
           },
 
@@ -85,7 +94,13 @@ const data = [
             +'• Bloquea la configuración y limita los permisos de las aplicaciones.\n'
             +'• Conoce tus aplicaciones y solo instala aplicaciones oficiales en tiendas de aplicaciones vinculadas verificadas.\n'
             +'• No hagas clic en cualquier enlace. No te apresures y observa tu entorno digital. Las estafas de phishing que cargan malware y virus en tus celulares suelen llegar en correos electrónicos, mensajes de texto o a través de tus círculos de confianza en las redes sociales. \n'
+            +'\n Bibliografía. \n\n'
+            +'Toni B. (2021). 5 Signs Your Device May be Infected with Malware or a Virus. McAfee. Recuperado el 6 de mayo de 2024 de https://www.mcafee.com/blogs/mobile-security/5-signs-your-device-may-be-infected-with-malware-or-a-virus/\n\n'
+            +'Kaspersky. (2024). ¿Qué son las cookies?. Recuperado el 6 de mayo de 2024 de https://rcs.cic.ipn.mx/2016_115/RCS_115_2016.pdf\n\n'
+            +'Malwarebytes. (2024). What is malware?. Malwarebytes. Recuperado el 6 de mayo de 2024 de https://www.malwarebytes.com/malware\n\n'
+            +'Noé C.	(2016). Advances in Natural Language Processing and Computational Linguistics. Instituto Politécnico Nacion al, Centro de Investigación en Computación. Recuperado el 6 de mayo de 2024 de https://rcs.cic.ipn.mx/2016_115/RCS_115_2016.pdf\n\n'
             +'\n\n'
+            
           },
 
     { id: '4', title: 'OSINT', 
@@ -116,8 +131,12 @@ const data = [
             +'Las técnicas de minería de datos pueden ayudar a realizar análisis de los ataques diarios, correlacionarlos y apoyar los procesos de toma de decisiones para una defensa eficaz, pero también para una reacción rápida. Del mismo modo, OSINT también puede considerarse en este contexto como una fuente de información para rastreos e investigaciones. El análisis digital forense puede incorporar OSINT para complementar las evidencias digitales que deja un incidente.\n\n'
             +'Análisis de opinión y sentimiento social en las redes sociales, es posible recopilar Interacciones, mensajes, intereses y preferencias de los usuarios. extraer conocimiento no explícito. La evidencia acumulada en las redes sociales es de gran alcance y ampliamente ventajoso. Tal recopilación y análisis es aplicada al marketing, las campañas políticas o la gestión de desastres.\n\n'
             +'Cibercrimen y crimen organizado en ellos los datos abiertos son Analizado continuamente y comparado por procesos OSINT para detectar intenciones criminales en una etapa temprana. escenario. Teniendo en cuenta los patrones de los adversarios y las relaciones entre delitos graves se puede proporcionar fuerzas de seguridad la oportunidad de detectar rápidamente\n\n'
+            +'\n Bibliografía. \n\n'
+            +'IL3. (2022). OSINT: qué es y técnicas más usadas. Instituto de Formación Continua, Universidad de Barcelona (IL3). Recuperado el 6 de mayo de 2024 de www.il3.ub.edu/blog/osint-que-es-y-tecnicas-mas-usadas/\n\n'
+            +'Javier P. (2019). The Not Yet Exploited Goldmine of OSINT: Opportunities, Open Challenges and Future Trends. IEEE Access. Recuperado el 6 de mayo de 2024 de https://ieeexplore.ieee.org/abstract/document/8954668\n\n'
+            +'Alberto F. (2021). OSINT, ¿Qué es? ¿Para qué sirve?. Derechodelared. Recuperado el 6 de mayo de 2024 de https://derechodelared.com/osint/\n\n'
             +'\n\n'
-          },
+        },
 
     { id: '5', title: 'Ingeniería social', 
     content: 'No hay duda de que en esta era digital el mayor activo valioso sea la información todas las organizaciones lo saben además que esta información se comparte con otras en siendo una invasión a la privacidad para aquellos usuarios que navegan por internet. El gran peligro que corremos todos los que usamos redes de comunicación digitales es la “Ingeniería social” pero que es.\n\n'
@@ -142,6 +161,12 @@ const data = [
             +'Roban cuentas reales para cometer ilícitos entre los contactos de la víctima, enviar software malicioso o para obtener información personal o se hacen pasar por soporte del correo.\n\n'
             +'\n Como mantener la guardia arriba \n\n'
             +'A menudo estos ataques son impredecibles, pero hay formas de defenderse de ellos como: nunca divulgar información sensible con desconocidos o en lugares públicos (como redes sociales, anuncios, páginas web, llamadas, etc.). Si se sospecha que alguien intenta realizar un engaño, hay que exigir se identifique y tratar de revertir la situación intentando obtener la mayor cantidad de información del sospechoso, configura la autenticación en dos pasos para estar alerta de accesos indebidos a tus cuentas.\n\n'
+            +'\n Bibliografía. \n\n'
+            +'Edgar S. (2011). Ingeniería Social: Corrompiendo la mente humana. Universidad Nacional Autónoma de México (UNAM). Recuperado el 6 de mayo de 2024 de https://www.ru.tic.unam.mx/handle/123456789/1750\n\n'
+            +'Gobierno de Argentina. (2024).  ¿Qué es la ingeniería social y cómo me protejo?. Recuperado el 6 de mayo de 2024 de https://www.argentina.gob.ar/justicia/convosenlaweb/situaciones/que-es-la-ingenieria-social-y-como-protegerte\n\n'
+            +'Cristian B. (2009).  El arma infalible: la Ingeniería Social. Technical & Educational Manager de (ESET). Recuperado el 6 de mayo de 2024 de https://www.informaticalegal.com.ar/wp-content/uploads/2011/09/Delitos-Informaticos.-ESET-El-arma-infalible-la-ingenieria-social.pdf\n\n'
+            +'Juan P. (2021). Ingeniería social, un ejemplo práctico. Revista Códigos.  Recuperado el 6 de mayo de 2024 de https://revista.uisrael.edu.ec/index.php/ro/article/view/493\n\n'
+            +'Claudia C. (2024). Phishing, vishing, smishing, ¿qué son y cómo protegerse de estas amenazas?. BBVA. Recuperado el 6 de mayo de 2024 de https://www.bbva.com/es/innovacion/phishing-vishing-smishing-que-son-y-como-protegerse-de-estas-amenazas/\n\n'
             +'\n\n'
           }
   ]
