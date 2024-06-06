@@ -4,9 +4,8 @@ import { lightColors, darkColors } from './colors/colorsPalettes.jsx';
 import { Subtitle, Title} from '../components/index.jsx';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-const Detail = ({ route }) => {
+const Detail = ({ route, navigation }) => {
   const { topic } = route.params;
-  const { navigation } = route.params;
   const colorScheme = useColorScheme();
   const palette = colorScheme === 'dark' ? darkColors : lightColors;
 

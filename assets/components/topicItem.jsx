@@ -34,7 +34,7 @@ const topicItem = props => {
   });
   return (
     <View style={styles.productCard}>
-        <TouchableOpacity onPress={() => props.navigation.navigate("Detail", { topic: props.topic, navigation: props.navigation})} style={styles.button}>
+        <TouchableOpacity onPress={() => props.navigation.navigate("Detail", { topic: props.topic})} style={styles.button}>
             <Text style={styles.point}>-</Text>
             <Text style={styles.name}>{props.topic.title}</Text>
             <Image source={flecha} style={styles.image}/>
