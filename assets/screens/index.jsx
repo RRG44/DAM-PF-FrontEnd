@@ -5,3 +5,4 @@ export { default as UrlScan } from './scanUrl.jsx';
 export { default as Academy } from './academy.jsx';
 export { default as CleanExif } from './cleanExif.jsx';
 export { default as SplashScreen } from './SplashScreen.jsx';
+export {default as Detail} from './Detail.jsx'

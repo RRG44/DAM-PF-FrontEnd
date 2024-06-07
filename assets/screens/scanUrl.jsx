@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, Alert, View, TextInput, TouchableWithoutFeedback, Keyboard, SafeAreaView, useColorScheme } from "react-native";
+import { StyleSheet, Text, Alert, View, TextInput, TouchableWithoutFeedback, Keyboard, SafeAreaView, useColorScheme,Linking } from "react-native";
 import { Button, ButtonMain, Title, Subtitle } from "../components/index.jsx";
+import { useCameraPermissions } from "expo-camera/next.js";
 import validator from "validator";
 import { lightColors, darkColors } from "./colors/colorsPalettes.jsx";
 import iconQR from "../images/qr.png"
@@ -9,7 +10,25 @@ export default function App({ navigation }) {
   const colorScheme = useColorScheme();
   const palette = colorScheme === "dark" ? darkColors : lightColors;
 
+  const [cameraPermission, requestPermission] = useCameraPermissions();
   const [url, setUrl] = useState("");
+
+  const checkPermissionsCamNavigate = async () => {
+    if (cameraPermission?.status === 'granted') {
+      navigation.navigate('Camera');
+    } else {
+      const permissionResponse = await requestPermission();
+      if (permissionResponse.granted) {
+        navigation.navigate('Camera');
+      } else {
+        Alert.alert(
+          "Permisos necesarios",
+          'Necesitas otorgar permisos para acceder a Scan URL. Por favor, ve a la configuración de tu dispositivo y otorga permisos a Cámara.',
+          [{ text: "Ir a configuración", onPress: () => Linking.openSettings() }]
+        );
+      }
+    }
+  };
 
   function isValidURL() {
     if (
@@ -85,7 +104,7 @@ export default function App({ navigation }) {
           <Subtitle palette={palette} text="Scan a QR code with the camera:" />
           <ButtonMain
             palette={palette}
-            onPress={() => navigation.navigate("Camera")}
+            onPress={checkPermissionsCamNavigate}
             text="Scan a QR code"
             source={iconQR}
             height={250}

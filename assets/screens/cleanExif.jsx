@@ -5,6 +5,7 @@ import {
   useColorScheme,
   ScrollView,
   Alert,
+  Linking,
 } from "react-native";
 import { lightColors, darkColors } from "./colors/colorsPalettes.jsx";
 import {
@@ -29,6 +30,25 @@ const CleanEXIF = ({ navigation }) => {
     });
     return unsubscribe;
   }, [navigation]);
+
+  const [mediaLibraryPermission, requestMediaLibraryPermission] = MediaLibrary.usePermissions();
+
+  const checkPermissionsFileNavigate = async () => {
+    if (mediaLibraryPermission?.status === 'granted') {
+      handleImagePicker();
+    } else {
+      const permissionResponse = await requestMediaLibraryPermission();
+      if (permissionResponse.granted) {
+        handleImagePicker();
+      } else {
+        Alert.alert(
+          "Permisos necesarios",
+          'Necesitas otorgar permisos para acceder a Clean Exif. Por favor, ve a la configuración de tu dispositivo y otorga permisos a Multimedia.',
+          [{ text: "Ir a configuración", onPress: () => Linking.openSettings() }]
+        );
+      }
+    }
+  };
 
   // const server = "http://148.220.212.218:8000";
 
@@ -272,7 +292,7 @@ const CleanEXIF = ({ navigation }) => {
               color={palette.darkblue}
               text="Select Image"
               marginBottom={25}
-              onPress={handleImagePicker}
+              onPress={checkPermissionsFileNavigate}
             />
           </>
         ) : isImageSended ? (

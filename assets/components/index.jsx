@@ -6,3 +6,5 @@ export {default as EXIFContainer} from './EXIFContainer.jsx';
 export {default as Button} from './Button.jsx';
 export {default as ProcessingMessage} from './ProcessingMessage.jsx';
 export {default as ResultsContainer} from './ResultsContainer.jsx';
+export {default as Topicitem} from './topicItem.jsx';
+export {default as TopicList} from './topicList.jsx';
